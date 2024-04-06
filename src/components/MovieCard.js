@@ -10,7 +10,6 @@ class MovieCard extends React.Component{
         if(isFavourite)
             this.props.dispatch(removeFavourite(movie));
         else{
-            console.log('ADDING')
             this.props.dispatch(addFavourite(movie));
         }
     }
