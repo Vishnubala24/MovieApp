@@ -24,7 +24,7 @@ class App extends React.Component {
 
     const index = movies.favourites.indexOf(movie);
 
-    if(index!=-1)
+    if(index!==-1)
       return true;
     return false;
   }
@@ -35,7 +35,7 @@ class App extends React.Component {
   }
 
   render() {
-    const {movies} = this.props.store.getState();
+    const {movies, search} = this.props.store.getState();
     const {movies: movieList, favourites, showFavourites} = movies;
     console.log('RENDER', this.props.store.getState());
 
@@ -43,7 +43,7 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        <Navbar />
+        <Navbar dispatch={this.props.store.dispatch} search={search}/>
         <div className="main">
           <div className="tabs">
             <div className={`tab ${showFavourites ? '' : 'active-tabs'}`} onClick={ () => this.onChangeTab(false) }>Movies</div>
@@ -63,7 +63,7 @@ class App extends React.Component {
             }
           </div>
 
-          {displayMovies.length == 0 ? <div className='no-movies'> No movies to display! </div> : null}
+          {displayMovies.length === 0 ? <div className='no-movies'> No movies to display! </div> : null}
         </div>
       </div>
     );
